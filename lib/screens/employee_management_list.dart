@@ -79,7 +79,7 @@ class EmployeeListScreen extends StatelessWidget {
                 )
                 : Center(
                   child: Image.asset(
-                    'images/notFound.png',
+                    'assets/images/notFound.png',
                     width: 300,
                     height: 300,
                   ),
