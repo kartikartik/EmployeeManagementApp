@@ -183,6 +183,7 @@ class _EmployeeFormScreenState extends State<EmployeeFormScreen> {
                 children: [
                   Container(
                     height: 40.0,
+                    width: MediaQuery.of(context).size.width / 2.6,
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(7.0),
@@ -229,6 +230,7 @@ class _EmployeeFormScreenState extends State<EmployeeFormScreen> {
                   const Icon(Icons.arrow_forward, color: Colors.blue),
                   Container(
                     height: 40.0,
+                    width: MediaQuery.of(context).size.width / 2.6,
                     padding: const EdgeInsets.all(4),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(7.0),
@@ -387,7 +389,7 @@ class _EmployeeFormScreenState extends State<EmployeeFormScreen> {
                 MaterialButton(
                   child: Container(
                     padding: const EdgeInsets.all(6),
-                    width: 120.0,
+                    width: 80,
                     // height: 50.0,
                     decoration: BoxDecoration(
                       color: btnTodaySelected ? Colors.blue : Colors.blue[50],
@@ -399,6 +401,7 @@ class _EmployeeFormScreenState extends State<EmployeeFormScreen> {
                         endDtFlag ? "No Date" : "Today",
                         style: TextStyle(
                           color: btnTodaySelected ? Colors.white : Colors.blue,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -428,7 +431,7 @@ class _EmployeeFormScreenState extends State<EmployeeFormScreen> {
                 MaterialButton(
                   child: Container(
                     padding: const EdgeInsets.all(6),
-                    // width: 200.0,
+                    //    width: MediaQuery.of(context).size.width/3.6,
                     // height: 50.0,
                     decoration: BoxDecoration(
                       color: btnNextMonSelected ? Colors.blue : Colors.blue[50],
@@ -441,6 +444,7 @@ class _EmployeeFormScreenState extends State<EmployeeFormScreen> {
                         style: TextStyle(
                           color:
                               btnNextMonSelected ? Colors.white : Colors.blue,
+                          fontSize: 12,
                         ),
                       ),
                     ),
@@ -484,7 +488,7 @@ class _EmployeeFormScreenState extends State<EmployeeFormScreen> {
                     MaterialButton(
                       child: Container(
                         padding: const EdgeInsets.all(6),
-                        width: 120.0,
+                        // width: MediaQuery.of(context).size.width/3.6,
                         // height: 50.0,
                         decoration: BoxDecoration(
                           color:
@@ -502,6 +506,7 @@ class _EmployeeFormScreenState extends State<EmployeeFormScreen> {
                                   btnNextTueSelected
                                       ? Colors.white
                                       : Colors.blue,
+                              fontSize: 12,
                             ),
                           ),
                         ),
@@ -531,6 +536,7 @@ class _EmployeeFormScreenState extends State<EmployeeFormScreen> {
                       child: Container(
                         padding: const EdgeInsets.all(6),
                         // height: 50.0,
+                        //  width: MediaQuery.of(context).size.width/3.6,
                         decoration: BoxDecoration(
                           color:
                               btnWeekSelected ? Colors.blue : Colors.blue[50],
@@ -543,6 +549,7 @@ class _EmployeeFormScreenState extends State<EmployeeFormScreen> {
                             style: TextStyle(
                               color:
                                   btnWeekSelected ? Colors.white : Colors.blue,
+                              fontSize: 12,
                             ),
                           ),
                         ),
@@ -572,7 +579,7 @@ class _EmployeeFormScreenState extends State<EmployeeFormScreen> {
                   ],
                 ),
             SizedBox(
-              width: 300,
+              width: MediaQuery.of(context).size.width * .8,
               height: 400,
               child: DatePicker(
                 highlightColor: Colors.blue,
@@ -613,55 +620,59 @@ class _EmployeeFormScreenState extends State<EmployeeFormScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Row(
-                  children: [
-                    const Icon(Icons.calendar_month, color: Colors.blue),
-                    const SizedBox(width: 4),
-                    StreamBuilder<String>(
-                      stream:
-                          endDtFlag ? _selectedEndDate : _selectedJoiningDate,
-                      builder: (context, snapshot) {
-                        if (snapshot.hasData) {
-                          return Text(
-                            '${snapshot.data}',
-                            style: const TextStyle(fontSize: 14),
-                          );
-                        } else {
-                          return const Text('-');
-                        }
-                      },
-                    ),
-                  ],
+                SizedBox(
+                  width:100,
+                  child: Row(
+                    children: [
+                      const Icon(Icons.calendar_month, color: Colors.blue),
+                      const SizedBox(width: 4),
+                      StreamBuilder<String>(
+                        stream:
+                            endDtFlag ? _selectedEndDate : _selectedJoiningDate,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasData) {
+                            return Text(
+                              '${snapshot.data}',
+                              style: const TextStyle(fontSize: 12),
+                            );
+                          } else {
+                            return const Text('-');
+                          }
+                        },
+                      ),
+                    ],
+                  ),
                 ),
-                const Spacer(),
+                 const Spacer(),
+                
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
+                    
                     MaterialButton(
+                      minWidth: MediaQuery.of(context).size.width * 0.14,
+                      padding: EdgeInsets.zero,
+                      
                       child: Container(
                         padding: const EdgeInsets.all(6),
-                        width: 73,
-                        height: 40,
+                        
+                        height: 36,
                         decoration: BoxDecoration(
                           color: Colors.blue[50],
                           borderRadius: BorderRadius.circular(7.0),
                         ),
-                        child: const Center(
-                          child: Text(
-                            "Cancel",
-                            style: TextStyle(color: Colors.blue),
-                          ),
-                        ),
+                        child: const Center(child: Text("Cancel")),
                       ),
                       onPressed: () {
                         Navigator.pop(context);
                       },
                     ),
                     MaterialButton(
+                       padding: EdgeInsets.zero,
+                       minWidth: MediaQuery.of(context).size.width * 0.18,
                       child: Container(
                         padding: const EdgeInsets.all(6),
-                        width: 73,
-                        height: 40,
+                        height: 36,
                         decoration: BoxDecoration(
                           color: Colors.blue,
                           borderRadius: BorderRadius.circular(7.0),
